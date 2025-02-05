@@ -24,4 +24,12 @@ class TmdbService
 
         return $response->successful() ? $response->json()['results'] : [];
     }
+
+    public function fetchTopRatedMovies() : array{
+        $response = Http::get("{$this->baseUrl}movie/top_rated",[
+            'api_key'=>$this->apiKey,
+            'language'=> 'es-ES'
+        ]);
+        return $response->successful() ? $response->json()['results'] : [];
+    }
 }

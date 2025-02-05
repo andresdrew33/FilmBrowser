@@ -31,6 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Ruta home. Muestra las películas populares del día. Solo pueden acceder los usuarios autenticados
-Route::get('/home',[MovieController::class,'popular'])->middleware(['auth'])->name('home');
+Route::get('/home',[MovieController::class,'home'])->middleware(['auth'])->name('home');
 
 require __DIR__.'/auth.php';

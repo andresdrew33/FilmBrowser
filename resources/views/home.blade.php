@@ -10,26 +10,57 @@
 </head>
 <body>
     <header>
-        <div class="text-center">
-            <h1> Películas populares del momento</h1>
-        </div>
+        <div class="header-overlay"></div>
+        <img src="{{ asset('images/header.jpg') }}" alt="Cabecera">
     </header>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-        @foreach($movies as $movie)
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="https://image.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}" class="img-slide" alt="{{ $movie['title'] }}">
-                    <div class="vote-overlay">
-                        <span>{{ number_format($movie['vote_average'], 1) }}</span> <!-- Redondear a 1 decimal -->
+
+    <!-- Carrusel de películas populares -->
+
+    <div class="general-container">
+        <div class="swiper-title">
+            <span> Películas populares</span>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+            @foreach($popular_movies as $movie)
+                <div class="swiper-slide">
+                    <div class="image-container">
+                        <img src="https://image.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}" class="img-slide" alt="{{ $movie['title'] }}">
+                        <div class="vote-overlay">
+                            <span>{{ number_format($movie['vote_average'], 1) }}</span> <!-- Redondear a 1 decimal -->
+                        </div>
                     </div>
                 </div>
+            @endforeach
             </div>
-        @endforeach
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </div>
+
+    <!-- Carrusel de mejor valoradas -->
+    <div class="general-container">
+        <div class="swiper-title">
+            <span> Las mejor valoradas</span>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+            @foreach($top_rated_movies as $movie)
+                <div class="swiper-slide">
+                    <div class="image-container">
+                        <img src="https://image.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}" class="img-slide" alt="{{ $movie['title'] }}">
+                        <div class="vote-overlay">
+                            <span>{{ number_format($movie['vote_average'], 1) }}</span> <!-- Redondear a 1 decimal -->
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+      
 </body>
 <footer class="bg-gray-900 text-white text-center py-6 mt-12">
     <p>© 2025 Andrés Martín | Desarrollado con ❤️ por Andrés Martín</p>

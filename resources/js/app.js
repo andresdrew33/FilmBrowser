@@ -28,7 +28,7 @@ const swiper = new Swiper('.swiper-container', {
 document.addEventListener("scroll", function() {
     const nav = document.querySelector("nav");
     if (window.scrollY > 50) {
-        nav.style.background = "rgba(0, 0, 0, 0.2)";
+        nav.style.background = "rgba(0, 0, 0, 0.5)";
     } else {
         nav.style.background = "rgba(0, 0, 0, 0.0)";
     }

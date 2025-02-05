@@ -14,9 +14,20 @@ class MovieController extends Controller
         $this->tmdbService = $tmdbService;
     }
 
+    public function home(){
+        return view('home',[
+            'popular_movies'=>$this->popular(),
+            'top_rated_movies'=>$this->top_rated(),
+        ]);
+    }
     public function popular()
     {
-        $movies = $this->tmdbService->fetchPopularMovies();
-        return view('home',['movies'=>$movies]);
+        $popular_movies = $this->tmdbService->fetchPopularMovies();
+        return $popular_movies;
+    }
+
+    public function top_rated(){
+        $top_rated_movies = $this->tmdbService->fetchTopRatedMovies();
+        return $top_rated_movies;
     }
 }

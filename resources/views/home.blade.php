@@ -10,8 +10,12 @@
 </head>
 <body>
     <header>
-        <div class="header-overlay"></div>
         <img src="{{ asset('images/header.jpg') }}" alt="Cabecera">
+        <div class="header-content">
+            <span>Film Browser</span></br>
+            <span>Tu buscador de películas de confianza</span>
+
+        </div>
     </header>
 
     <!-- Carrusel de películas populares -->

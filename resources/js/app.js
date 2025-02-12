@@ -33,3 +33,16 @@ document.addEventListener("scroll", function() {
         nav.style.background = "rgba(0, 0, 0, 0.0)";
     }
 });
+
+//Evento para borrar la búsqueda si clicko fuera de la barra
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.querySelector("input[name='query']");
+    const searchForm = document.querySelector(".search-bar form");
+
+    document.addEventListener("click", function(event) {
+        // Verifica si el clic fue fuera del formulario de búsqueda
+        if (!searchForm.contains(event.target)) {
+            searchInput.value = ""; // Borra el valor del input
+        }
+    });
+});

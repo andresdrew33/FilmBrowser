@@ -32,4 +32,13 @@ class TmdbService
         ]);
         return $response->successful() ? $response->json()['results'] : [];
     }
+
+    public function searchMovie(string $query):  array{
+        $response = Http::get("{$this->baseUrl}search/movie",[
+            'query'=>$query,
+            'api_key'=>$this->apiKey,
+            'language'=>'es-Es'
+        ]);
+        return $response->successful() ? $response->json()['results'] : [];
+    }
 }

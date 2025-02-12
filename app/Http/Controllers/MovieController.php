@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\TmdbService;
+use Illuminate\Http\Request;
 use Doctrine\DBAL\Schema\View;
 
 class MovieController extends Controller
@@ -29,5 +30,16 @@ class MovieController extends Controller
     public function top_rated(){
         $top_rated_movies = $this->tmdbService->fetchTopRatedMovies();
         return $top_rated_movies;
+    }
+
+    public function searchMovie(Request $request){
+
+        $query = $request->input('query');
+        if(!$query){
+            return view('search',['movies'=>[]]);
+        }
+
+        $searched_movie = $this->tmdbService->searchMovie($query);
+        return view('search',['movies'=>$searched_movie,'query'=>$query]);
     }
 }

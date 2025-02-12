@@ -16,9 +16,9 @@ use App\Http\Controllers\MovieController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return redirect()->route('home');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Ruta home. Muestra las películas populares del día. Solo pueden acceder los usuarios autenticados
-Route::get('/home',[MovieController::class,'home'])->middleware(['auth'])->name('home');
+Route::get('/',[MovieController::class,'home'])->name('home');
+//Ruta search
+Route::get('/search',[MovieController::class,'searchMovie'])->name('search');
 
 require __DIR__.'/auth.php';
